@@ -20,7 +20,6 @@ import {
 import DateTime, { DATE_FORMAT } from './DateTime';
 import DateRangePresets, { getPresetLabel } from '~/components/form/date-time/DateRangePresets';
 
-import './DateRangePicker.sass';
 import { isNullOrUndefined } from 'util';
 
 const USER_FORMAT = 'DD MMM YYYY';

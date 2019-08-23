@@ -6,8 +6,6 @@ import Button from '~/components/form/Button';
 
 import { Range, RangeValue, OnChange } from './types';
 
-import './DateRangePresets.sass';
-
 const TODAY = new Date();
 const FORMAT = 'YYYY-MM-DD';
 

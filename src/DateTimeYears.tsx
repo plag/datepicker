@@ -98,14 +98,14 @@ class DateTimeYears extends Component<DateTimeYearsProps> {
             <tr key={ `year-${index}` }>
               { fourYears.map((year: Date) => (
                 <td
-                  key={ format(year, 'YYYY') }
+                  key={ format(year, 'yyyy') }
                   className={classnames('date-time__year', {
                     'date-time__disabled': !isDateInRange(year, this.props.canSelectFromDate, this.props.canSelectToDate, Granularity.YEAR),
                     'date-time__year--current': isSameYear(year, this.props.selectedDate),
                     'date-time__year--in-range': this.isInRange(year),
                   }) }
                   data-value={ getYear(year) }
-                >{ format(year, 'YYYY') }</td>
+                >{ format(year, 'yyyy') }</td>
               )) }
             </tr>
           ))}

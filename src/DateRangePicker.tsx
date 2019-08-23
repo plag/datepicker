@@ -22,7 +22,7 @@ import DateRangePresets, { getPresetLabel } from '~/components/form/date-time/Da
 
 import { isNullOrUndefined } from 'util';
 
-const USER_FORMAT = 'DD MMM YYYY';
+const USER_FORMAT = 'dd MMM yyyy';
 
 const TODAY = new Date();
 const FIRST_VERTICAL_DATE = new Date(2000, 0, 1);
@@ -204,7 +204,7 @@ export default class DateStateRangePicker extends Component<DateStateRangePicker
           {
             this.state.showingPages.map((showingPage, index): React.ReactElement => (
               <DateTime
-                key={ format(showingPage, 'YYYY-MM-DD') }
+                key={ format(showingPage, 'yyyy-MM-dd') }
                 canSelectFromDate={
                   this.state.selectionMode === Range.TO
                     ? this.getCanSelectFrom(canSelectFrom, this.state.selectedFrom)
@@ -277,7 +277,7 @@ export default class DateStateRangePicker extends Component<DateStateRangePicker
                 ({ index, style }): React.ReactElement => (
                   <div key={ index } style={ style }>
                     <DateTime
-                      key={ format(addMonths(FIRST_VERTICAL_DATE, index), 'YYYY-MM-DD') }
+                      key={ format(addMonths(FIRST_VERTICAL_DATE, index), 'yyyy-MM-dd') }
                       canSelectFromDate={
                         this.state.selectionMode === Range.TO
                           ? this.getCanSelectFrom(canSelectFrom, this.state.selectedFrom)

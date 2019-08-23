@@ -7,7 +7,7 @@ import Button from '~/components/form/Button';
 import { Range, RangeValue, OnChange } from './types';
 
 const TODAY = new Date();
-const FORMAT = 'YYYY-MM-DD';
+const FORMAT = 'yyyy-MM-dd';
 
 const PRESETS = [
   {

@@ -79,7 +79,7 @@ class DateTimeDays extends Component<DateTimeDaysProps> {
   public render(): React.ReactNode {
     const periodStartDate = startOfMonth(this.props.showingPageDate);
 
-    const headerTitle = format(periodStartDate, 'MMMM, YYYY');
+    const headerTitle = format(periodStartDate, 'MMMM, yyyy');
 
     const isCanNavigatePrev = this.isPrevButtonEnabled(periodStartDate);
     const isCanNavigateNext = this.isNextButtonEnabled(periodStartDate);
@@ -143,8 +143,8 @@ class DateTimeDays extends Component<DateTimeDaysProps> {
               { week.map((day: Date) => (
                 isSameMonth(day, periodStartDate)
                   ? <td
-                    key={ format(day, 'YYYY-MM-DD') }
-                    data-value={ format(day, 'YYYY-MM-DD') }
+                    key={ format(day, 'yyyy-MM-dd') }
+                    data-value={ format(day, 'yyyy-MM-dd') }
                     className={
                       classnames('date-time__day', {
                         'date-time__disabled': !isDateInRange(day, this.props.canSelectFromDate, this.props.canSelectToDate, Granularity.DAY),
@@ -157,7 +157,7 @@ class DateTimeDays extends Component<DateTimeDaysProps> {
                       })
                     }
                   >{ format(day, 'D') }{ isToday(day) && <div className="date-time__today-label">Today</div> } </td>
-                  : <td key={ format(day, 'YYYY-MM-DD') }>&nbsp;</td>
+                  : <td key={ format(day, 'yyyy-MM-dd') }>&nbsp;</td>
               )) }
             </tr>
           )) }

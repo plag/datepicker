@@ -69,7 +69,7 @@ class DateTimeMonths extends Component<DateTimeMonthsProps> {
   render() {
     const periodStartDate = startOfYear(this.props.showingPageDate);
 
-    const headerTitle = format(periodStartDate, 'YYYY');
+    const headerTitle = format(periodStartDate, 'yyyy');
 
     const isCanNavigatePrev = this.isPrevButtonEnabled(periodStartDate);
     const isCanNavigateNext = this.isNextButtonEnabled(periodStartDate);
@@ -108,7 +108,7 @@ class DateTimeMonths extends Component<DateTimeMonthsProps> {
             <tr key={ `quarter-${index}` }>
               { quarter.map((month: Date) => (
                 <td
-                  key={ format(month, 'YYYY-MM') }
+                  key={ format(month, 'yyyy-MM') }
                     className={classnames('date-time__month', {
                     'date-time__disabled': !isDateInRange(month, this.props.canSelectFromDate, this.props.canSelectToDate, Granularity.MONTH),
                     'date-time__month--current': this.props.selectedDate && isSameMonth(month, this.props.selectedDate),

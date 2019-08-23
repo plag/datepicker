@@ -5,7 +5,7 @@ import DateTimeYears from './DateTimeYears';
 
 import { Granularity, OnSelect, OnChangePage } from './types';
 
-export const DATE_FORMAT = 'YYYY-MM-DD';
+export const DATE_FORMAT = 'yyyy-MM-dd';
 
 interface DateTimeComponentProps {
   selectedFromDate: Date;

@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import classnames from 'classnames';
-import Svg from '~/components/Svg';
-import ArrowSvg from '~/icons/arrow.svg';
+import ArrowSvg from './arrow';
 import { isDateInRange, parseDate } from './helpers';
 import {
   startOfMonth,

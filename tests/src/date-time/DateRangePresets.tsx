@@ -2,9 +2,11 @@ import React, { Component } from 'react';
 
 import { subDays, startOfMonth, format } from 'date-fns';
 import classnames from 'classnames';
-import Button from '~/components/form/Button';
+import Button from '../button/Button';
 
-import { Range, RangeValue, OnChange } from './types';
+import { Range, OnChange } from './types';
+
+import './DateRangePresets.sass';
 
 const TODAY = new Date();
 const FORMAT = 'yyyy-MM-dd';
@@ -60,7 +62,10 @@ const isCurrentPreset = (from: Date, to: Date, preset: any): boolean => {
     return false;
   }
 
-  return format(from, FORMAT) === preset.value[Range.FROM] && format(to, FORMAT) === preset.value[Range.TO];
+  const compareFromValue = from === null ? null : format(from, FORMAT);
+  const compareToValue = to === null ? null : format(to, FORMAT);
+
+  return compareFromValue === preset.value[Range.FROM] && compareToValue === preset.value[Range.TO];
 };
 
 export const getPresetLabel = (from: Date, to: Date, userFormat: string): string => {

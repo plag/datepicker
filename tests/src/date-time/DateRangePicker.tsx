@@ -4,7 +4,7 @@ import classnames from 'classnames';
 
 import { parseDate, makeWeekArray } from './helpers';
 import { Granularity, Range, RangeValue, OnChange } from './types';
-import Modal from '~/components/modal/Modal';
+import Modal from '../modal/Modal';
 
 import {
   format,
@@ -18,8 +18,9 @@ import {
 } from 'date-fns';
 
 import DateTime, { DATE_FORMAT } from './DateTime';
-import DateRangePresets, { getPresetLabel } from '~/components/form/date-time/DateRangePresets';
+import DateRangePresets, { getPresetLabel } from './DateRangePresets';
 
+import './DateRangePicker.sass';
 import { isNullOrUndefined } from 'util';
 
 const USER_FORMAT = 'dd MMM yyyy';
@@ -130,7 +131,7 @@ export default class DateStateRangePicker extends Component<DateStateRangePicker
 
   private getCanSelectFrom(canSelectFrom: Date, selectedFrom: Date): Date {
     if (canSelectFrom && selectedFrom) {
-      return max(canSelectFrom, selectedFrom);
+      return max([canSelectFrom, selectedFrom]);
     }
 
     if (canSelectFrom) {
@@ -247,7 +248,7 @@ export default class DateStateRangePicker extends Component<DateStateRangePicker
     const canSelectTo = this.props.to ? parseDate(this.props.to) : null;
 
     return (
-      <Modal className="modal_nopadding_mod"
+      <Modal className="modal_nopadding_mod modal_nopadding_mod-datepicker"
         onClose={ this.hideDatePicker }
       >
         <div className="date-range date-range--vertical" ref={ this.containerRef }>

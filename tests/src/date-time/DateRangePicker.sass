@@ -1,0 +1,84 @@
+@import './vars'
+
+.date-range
+  background: #fff
+  background-color: $white
+  font-size: 1.4rem
+  font-weight: 500
+  &__input
+    position: relative
+    &--is-menu-open
+      .date-range__selected-dates
+        color: #000
+        cursor: pointer
+        &:before
+          border-top-color: #000
+          transform: rotate(90deg) translateY(-50%);
+          transform-origin: 3px 0;
+  &--horizontal
+    position: absolute
+    z-index: 99999 !important
+    box-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.1);
+    padding-left: 30px
+    padding-right: 30px
+    padding-bottom: 30px
+  &--vertical
+    height: 100vh
+    display: flex
+    flex-direction: column
+    align-items: center
+    .date-range__selected-dates
+      font-size: 2rem
+      font-weight: bold
+      text-transform: uppercase
+      margin-top: 20px
+      padding-right: 0px
+      color: #000
+      &:before
+        display: none
+
+    .date-range__container
+      height: calc(100% - 195px);
+
+    .date-time__switch
+      &:hover
+        cursor: default
+        background-color: $white
+    .date-time__arrows--prev, .date-time__arrows--next
+        cursor: default
+  &__external-weekdays
+    display: flex
+    width: 280px
+    .date-time__week-day
+      width: 40px
+      text-align: center
+  &__selected-dates
+    color: $blue
+    padding-right: 15px
+    &:hover
+      color: #000
+      cursor: pointer
+      &:before
+        border-top-color: #000
+        transform: rotate(90deg) translateY(-50%);
+        transform-origin: 3px 0;
+    &:before
+      content: '';
+      display: block;
+      position: absolute;
+      right: 0px;
+      top: 50%;
+      transform: translateY(-50%);
+      border-left: 3px solid transparent;
+      border-right: 3px solid transparent;
+      border-top: 4px solid #2ea6dd;
+      transition: all 0.3s;
+
+  &__container
+    display: flex
+    .date-time:not(:first-child)
+      padding-left: 25px
+
+  .date-range__presets
+    margin-bottom: 25px
+    margin-top: 25px

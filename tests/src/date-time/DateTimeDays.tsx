@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import classnames from 'classnames';
-import ArrowSvg from './arrow';
+import ArrowSvg from './Arrow';
 import { isDateInRange, parseDate } from './helpers';
 import {
   startOfMonth,
@@ -101,7 +101,7 @@ class DateTimeDays extends Component<DateTimeDaysProps> {
               }
             >
               {
-                !this.props.hidePrevPageArrow && <Svg src={ ArrowSvg } />
+                !this.props.hidePrevPageArrow && <ArrowSvg />
               }
             </th>
             <th
@@ -125,7 +125,7 @@ class DateTimeDays extends Component<DateTimeDaysProps> {
               }
             >
               {
-                !this.props.hideNextPageArrow && <Svg src={ ArrowSvg } />
+                !this.props.hideNextPageArrow && <ArrowSvg />
               }
             </th>
           </tr>
@@ -156,7 +156,7 @@ class DateTimeDays extends Component<DateTimeDaysProps> {
                         'date-time__day--today': isToday(day),
                       })
                     }
-                  >{ format(day, 'D') }{ isToday(day) && <div className="date-time__today-label">Today</div> } </td>
+                  >{ format(day, 'd') }{ isToday(day) && <div className="date-time__today-label">Today</div> } </td>
                   : <td key={ format(day, 'yyyy-MM-dd') }>&nbsp;</td>
               )) }
             </tr>

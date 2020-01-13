@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import classnames from 'classnames';
-import ArrowSvg from './arrow';
+import ArrowSvg from './Arrow';
 
 import {
   subYears,
@@ -85,7 +85,7 @@ class DateTimeMonths extends Component<DateTimeMonthsProps> {
                 })
               }
               onClick={ isCanNavigatePrev ? this.handleNavigationClick.bind(this, Modificator.SUB) : this.preventEvent }
-            ><Svg src={ArrowSvg} /></th>
+            ><ArrowSvg /></th>
             <th
               ref={ this.headerRef }
               className="date-time__switch"
@@ -100,7 +100,7 @@ class DateTimeMonths extends Component<DateTimeMonthsProps> {
                 })
               }
               onClick={ isCanNavigateNext ? this.handleNavigationClick.bind(this, Modificator.ADD) : this.preventEvent }
-            ><Svg src={ArrowSvg} /></th>
+            ><ArrowSvg /></th>
           </tr>
         </thead>
         <tbody onClick={ this.handleCellClick }>

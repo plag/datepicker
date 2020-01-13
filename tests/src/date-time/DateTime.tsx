@@ -5,6 +5,8 @@ import DateTimeYears from './DateTimeYears';
 
 import { Granularity, OnSelect, OnChangePage } from './types';
 
+import './DateTime.sass';
+
 export const DATE_FORMAT = 'yyyy-MM-dd';
 
 interface DateTimeComponentProps {

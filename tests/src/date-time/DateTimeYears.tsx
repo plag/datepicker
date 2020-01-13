@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import classnames from 'classnames';
 
-import ArrowSvg from './arrow';
+import ArrowSvg from './Arrow';
 
 import { isDateInRange } from './helpers';
 import { Granularity, OnYearSelect, Modificator, OnHeaderClick, OnChangePage } from './types';
@@ -77,7 +77,7 @@ class DateTimeYears extends Component<DateTimeYearsProps> {
                 })
               }
               onClick={ isCanNavigatePrev ? this.handleNavigationClick.bind(this, -1) : this.preventEvent }
-            ><Svg src={ArrowSvg} /></th>
+            ><ArrowSvg /></th>
             <th
               className="date-time__switch"
               colSpan={ 2 }
@@ -90,7 +90,7 @@ class DateTimeYears extends Component<DateTimeYearsProps> {
                 })
               }
               onClick={ isCanNavigateNext ? this.handleNavigationClick.bind(this, 1) : this.preventEvent }
-            ><Svg src={ArrowSvg} /></th>
+            ><ArrowSvg /></th>
           </tr>
         </thead>
         <tbody onClick={ this.handleCellClick }>

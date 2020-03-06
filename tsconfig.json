@@ -19,16 +19,16 @@
       "./node_modules/@types",
       "./typings"
     ],
-    "paths": {
-      "~/*": [
-        "./*"
-      ],
-    },
     "lib": [
       "dom",
       "es2015",
       "es2016"
-    ]
+    ],
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true
   },
   "exclude": [
     "node_modules",

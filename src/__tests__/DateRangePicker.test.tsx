@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, fireEvent } from '@testing-library/react';
-import DateRangePicker from '../DateRangePicker';
+import DateRangePicker from 'plag-datepicker/lib/date-time/DateRangePicker';
 import format from 'date-fns/format';
 import subDays from 'date-fns/subDays';
 import setDate from 'date-fns/setDate';
@@ -29,7 +29,7 @@ test('renders datepicker last 7 days', () => {
   const value = {
     from: format(subDays(new Date(), 7), 'yyyy-MM-dd'),
     to: format(new Date(), 'yyyy-MM-dd'),
-  }
+  };
 
   const { getByText } = render(
     <DateRangePicker

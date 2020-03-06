@@ -27,7 +27,7 @@ test('renders datepicker all time', () => {
 
 test('renders datepicker last 7 days', () => {
   const value = {
-    from: format(subDays(new Date(), 7), 'yyyy-MM-dd'),
+    from: format(subDays(new Date(), 6), 'yyyy-MM-dd'),
     to: format(new Date(), 'yyyy-MM-dd'),
   };
 
@@ -76,7 +76,7 @@ test('renders datepicker yesterday', () => {
 });
 
 test('renders datepicker last 30 days', () => {
-  const from = format(subDays(new Date(), 30), 'yyyy-MM-dd');
+  const from = format(subDays(new Date(), 29), 'yyyy-MM-dd');
   const to = format(new Date(), 'yyyy-MM-dd');
   const value = {
     from,
@@ -118,11 +118,16 @@ test('renders two last monthes', () => {
       onChange={ () => {} }
     />
   );
+  const today = new Date();
+
   const linkElement = getByText(/All time/i);
-  fireEvent.click(linkElement)
-  const firstMonth = getByText(/December, 2019/i);
+  fireEvent.click(linkElement);
+  const currentMonth = format(today, 'MMMM, yyyy');
+  const previousMonth = format(subMonths(today, 1), 'MMMM, yyyy');
+
+  const firstMonth = getByText(previousMonth);
   expect(firstMonth).toBeInTheDocument();
-  const secondMonth = getByText(/January, 2020/i);
+  const secondMonth = getByText(currentMonth);
   expect(secondMonth).toBeInTheDocument();
 });
 
@@ -134,16 +139,19 @@ test('block dates', () => {
 
   const { getByText } = render(
     <DateRangePicker
-      value={ null }
+      value={ {
+        from: format(date, 'yyyy-MM-dd'),
+        to: format(date, 'yyyy-MM-dd'),
+      } }
       onChange={ () => {} }
       from={ from }
       to={ to }
     />
   );
-  const linkElement = getByText(/All time/i);
+  const linkElement = getByText(/15 Jan 2020 — 15 Jan 2020/i);
   fireEvent.click(linkElement)
 
-  const prevDate = format(subDays(date, 8), 'yyyy-MM-dd');
+  const prevDate = format(subDays(date, 9), 'yyyy-MM-dd');
   const prevDateElement = document.querySelectorAll(`[data-value='${ prevDate }']`)
 
   expect(prevDateElement[0]).toHaveClass('date-time__disabled');
@@ -382,13 +390,13 @@ test('can select year', () => {
   const linkElement = getByText(/All time/i);
   fireEvent.click(linkElement)
 
-  const date = new Date(2020, 0, 15);
+  const now = new Date();
 
-  const currentMonth = format(date, 'MMMM, yyyy');
+  const currentMonth = format(now, 'MMMM, yyyy');
   const monthHeaderElement = getByText(currentMonth);
   fireEvent.click(monthHeaderElement)
 
-  const currentYear = format(new Date(), 'yyyy');
+  const currentYear = format(now, 'yyyy');
 
   const yearHeaderElement = getByText(currentYear);
   fireEvent.click(yearHeaderElement)
@@ -409,7 +417,7 @@ test('can select next decade', () => {
     />
   );
   const linkElement = getByText(/All time/i);
-  fireEvent.click(linkElement)
+  fireEvent.click(linkElement);
 
   const now = new Date();
 
@@ -422,18 +430,20 @@ test('can select next decade', () => {
   const currentYearElement = getByText(currentYear);
   fireEvent.click(currentYearElement)
 
-  const nextDecadeButton = document.querySelectorAll(".date-time__arrows--next")
+  const nextDecadeButton = document.querySelectorAll(".date-time__arrows--next");
   fireEvent.click(nextDecadeButton[1]); // first - prev month without arrow
 
   const nextDecade = addYears(now, 10);
-  const nextDecadeStart = subYears(nextDecade, getYear(nextDecade) % 10 - 1)
-  const nextDecadeEnd = addYears(nextDecade, 12);
+  const nextDecadeYear = getYear(nextDecade);
+
+  const nextDecadeStart = subYears(nextDecade, nextDecadeYear % 10);
+  const nextDecadeEnd = addYears(nextDecade, 11);
 
   const startDecadeLabel = format(nextDecadeStart, 'yyyy');
   const endDecadeLabel = format(nextDecadeEnd, 'yyyy');
 
-  const switches = document.querySelectorAll(".date-time__switch")
-  expect(switches[1]).toHaveTextContent(`${ startDecadeLabel }-${ endDecadeLabel }`)
+  const switches = document.querySelectorAll(".date-time__switch");
+  expect(switches[1]).toHaveTextContent(`${ startDecadeLabel }-${ endDecadeLabel }`);
 });
 
 test('can select prev decade', () => {
@@ -457,16 +467,18 @@ test('can select prev decade', () => {
   const currentYearElement = getByText(currentYear);
   fireEvent.click(currentYearElement)
 
-  const prevDecadeButton = document.querySelectorAll(".date-time__arrows--prev")
+  const prevDecadeButton = document.querySelectorAll(".date-time__arrows--prev");
   fireEvent.click(prevDecadeButton[1]); // first - prev month without arrow
 
   const prevDecade = subYears(now, 10);
-  const prevDecadeStart = subYears(prevDecade, getYear(prevDecade) % 10 - 1)
-  const prevDecadeEnd = addYears(prevDecade, 12);
+  const prevDecadeYear = getYear(prevDecade);
+
+  const prevDecadeStart = subYears(prevDecade, prevDecadeYear % 10);
+  const prevDecadeEnd = addYears(prevDecade, 11);
 
   const startDecadeLabel = format(prevDecadeStart, 'yyyy');
   const endDecadeLabel = format(prevDecadeEnd, 'yyyy');
 
-  const switches = document.querySelectorAll(".date-time__switch")
-  expect(switches[1]).toHaveTextContent(`${ startDecadeLabel }-${ endDecadeLabel }`)
+  const switches = document.querySelectorAll(".date-time__switch");
+  expect(switches[1]).toHaveTextContent(`${ startDecadeLabel }-${ endDecadeLabel }`);
 });

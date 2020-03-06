@@ -22,7 +22,7 @@ export default class Input extends Component {
     onChange: PropTypes.func,
     focusOnMount: PropTypes.bool,
     disabled: PropTypes.bool,
-    name: PropTypes.string.isRequired,
+    name: PropTypes.string,
     isValid: PropTypes.bool,
     style: PropTypes.object,
     value: PropTypes.string,

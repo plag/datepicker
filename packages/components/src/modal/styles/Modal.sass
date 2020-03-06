@@ -1,0 +1,257 @@
+@import '../../date-time/styles/vars.sass';
+
+.modal_content
+  position: absolute
+  top: 0
+  min-width: 65%
+
+.modal_nopadding_mod
+  .dialog
+    padding-left: 0
+    padding-right: 0
+    padding-bottom: 0
+  &-datepicker
+    .dialog
+      padding-top: 0
+
+.dialog_full
+  .dialog
+    padding: 0
+    overflow-y: scroll
+    bottom: auto
+    min-height: 100vh
+    height: 100%
+    align-items: flex-start
+
+@media ($tablet)
+  .modal_nopadding_mod
+    .dialog
+      padding-top: 0
+
+.dialog
+  background-color: $white
+  position: fixed
+  left: 0
+  top: 0
+  bottom: 0
+  right: 0
+  box-sizing: border-box
+  z-index: 50
+  color: $black
+  padding: 50px 20px
+  align-items: center
+  justify-content: center
+  display: flex
+  opacity: 0
+  visibility: hidden
+  transition: all $fast
+  min-width: 320px
+  overflow: auto
+
+  &_opened
+    // display: flex
+    visibility: visible
+    opacity: 1
+
+  &__overlay
+    position: fixed
+    // background-color: rgba(0,0,0,.4)
+    left: 0
+    top: 0
+    right: 0
+    bottom: 0
+    z-index: 150
+    display: flex
+    overflow: auto
+    align-items: flex-start
+    justify-content: center
+    display: none
+    opacity: 0
+    transition: all $fast
+
+    &.dialog_opened
+      display: flex
+      opacity: 1
+
+  &__close
+    position: fixed
+    right: 20px
+    top: 15px
+    cursor: pointer
+    z-index: 5
+    overflow: hidden
+    display: flex
+    align-items: center
+    font-size: 1.4rem
+    font-weight: bold
+    width: 25px;
+    height: 25px;
+    transform: rotate(45deg);
+
+    &:focus
+      outline: 1px solid black
+
+    &::before,
+    &::after
+      content: ''
+      display: block
+      position: absolute
+      background-color: $black
+
+    &::before
+      width: 14px
+      height: 2px
+      top: 14px
+      left: 8px
+
+    &::after
+      height: 14px
+      width: 2px
+      left: 14px
+      top: 8px
+
+    &:hover
+      color: $blue
+
+      .dialog__close-i
+        fill: $blue
+
+    .dialog__back-text
+      padding-right: 20px
+
+    &-i
+      width: 20px
+      height: 20px
+      display: block
+      transform: rotate(-45deg)
+      fill: $black
+      transition: fill $fast
+      position: absolute
+      top: 0px
+
+  &__close-i-container
+    width: 20px
+    height: 20px
+    position: relative
+    display: none
+
+  &__title
+    text-align: center
+    font-size: 30px
+    line-height: 1
+    margin-bottom: 10px
+    font-weight: 600
+
+  &__buttons
+    display: flex
+    justify-content: center
+
+  &__back
+    position: absolute
+    left: 17px
+    top: 10px
+    display: flex
+    align-items: center
+    cursor: pointer
+    padding: 10px
+
+    &-text
+      display: none
+
+    &-i
+      width: 20px
+      height: 20px
+      transform: rotate(180deg)
+      margin-right: 16px
+
+  &__table
+    background-color: $light
+    padding: 20px
+    max-width: 430px
+    margin: 20px auto 30px
+    width: 100%
+    display: flex
+    justify-content: center
+    box-sizing: border-box
+
+    th
+      text-align: left
+      padding-right: 20px
+
+    tr
+
+      // &:last-child
+
+      //   td,
+      //   th
+      //     padding-top: 30px
+
+    td
+      color: rgba(0,0,0,.6)
+      font-weight: 500
+
+
+@media ($tablet)
+
+  .dialog
+
+    &__close
+      position: fixed
+      right: 40px
+      top: 30px
+      cursor: pointer
+      z-index: 5
+      width: auto;
+      height: auto;
+      transform: none
+
+
+      &::before,
+      &::after
+        display: none
+
+      &-i
+        display: block
+        width: 20px
+        height: 20px
+        transform: rotate(-45deg)
+
+    &__close-i-container
+      width: 20px
+      height: 20px
+      display: block
+
+    &__table
+      width: 430px
+      margin-top: 40px
+
+    &__title
+      font-size: 4rem
+      margin-bottom: 20px
+
+    &__descr
+      margin-bottom: 40px
+      max-width: 600px
+
+    &__back
+      z-index: 10
+      color: $blue
+
+      &:focus
+        outline: 1px solid $blue
+
+      &:hover
+
+        .dialog__back-text
+          color: $black
+
+        .dialog__back-i
+          fill: $black
+
+      &-i
+        fill: $blue
+        transition: fill $fast
+
+      &-text
+        display: inline-block
+        transition: color $fast

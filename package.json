@@ -1,27 +1,54 @@
 {
-  "name": "plag-datepicker",
-  "version": "1.0.0",
-  "main": "index.js",
-  "repository": "git@github.com:plag/datepicker.git",
-  "author": "Victor Denisov <mr.plag@gmail.com>",
-  "license": "MIT",
+  "name": "tests",
+  "version": "0.1.0",
+  "private": true,
   "dependencies": {
-    "date-fns": "^2.0.0",
-    "react-tiny-virtual-list": "^2.2.0"
+    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/react": "^9.3.2",
+    "@testing-library/user-event": "^7.1.2",
+    "@types/jest": "^24.0.0",
+    "@types/node": "^12.0.0",
+    "@types/react": "^16.9.0",
+    "@types/react-dom": "^16.9.0",
+    "classnames": "^2.2.6",
+    "date-fns": "^2.9.0",
+    "dom-helpers": "^5.1.3",
+    "node-sass": "^4.13.0",
+    "normalize.css": "^8.0.1",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0",
+    "react-scripts": "^3.4.0",
+    "react-tiny-virtual-list": "^2.2.0",
+    "typescript": "~3.7.2"
   },
   "scripts": {
-    "prepare-lib": "babel --extensions \".ts,.tsx,.js\" src --out-dir lib/"
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "coverage": "react-scripts test --coverage",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   },
   "devDependencies": {
-    "@babel/cli": "^7.5.5",
-    "@babel/core": "^7.5.5",
-    "@babel/plugin-proposal-class-properties": "^7.5.5",
-    "@babel/preset-env": "^7.5.5",
-    "@babel/preset-react": "^7.0.0",
-    "@babel/preset-typescript": "^7.3.3",
-    "@typescript-eslint/eslint-plugin": "^1.13.0",
-    "@typescript-eslint/parser": "^1.13.0",
-    "babel-plugin-module-resolver": "^3.2.0",
-    "eslint": "^6.1.0"
+    "@types/classnames": "^2.2.9"
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "src/**/*.{js,jsx,ts,tsx}"
+    ]
   }
 }

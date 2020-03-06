@@ -34,10 +34,8 @@
     "node_modules",
     "build",
     "lib",
-    "./packages/components/lib"
   ],
   "include": [
-    "./src/**/*",
-    "./packages/**/*"
+    "./tests/src/**/*"
   ]
 }

@@ -1,0 +1,29 @@
+{
+  "presets": [
+    [
+      "@babel/preset-env",
+      {
+        "targets": "> 0.25%, not dead"
+      }
+    ],
+    "@babel/preset-typescript",
+    "@babel/preset-react"
+  ],
+  "plugins": [
+    "@babel/plugin-proposal-class-properties",
+    [
+      "module-resolver",
+      {
+        "root": ["."],
+        "alias": {
+          "~": ".",
+          "styles": "./styles"
+        },
+        "cwd": "babelrc"
+      }
+    ]
+  ],
+  "ignore": [
+    "src/__tests__"
+  ]
+}

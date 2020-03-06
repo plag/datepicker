@@ -1,0 +1,90 @@
+@import './vars';
+
+.date-time
+  &__arrows
+    &:hover
+      cursor: pointer
+    svg
+      width: 20px
+      height: 20px
+    &--prev
+      svg
+        transform: rotate(180deg)
+  &__disabled
+    background: none
+    opacity: 0.2
+    cursor: not-allowed
+    &:hover
+      background: none
+      cursor: not-allowed
+  &__day
+    width: 30px
+    height: 30px
+    padding: 0px !important
+    &--in-range,  &--current
+      background-color: $blue
+      color: $white
+    &--first-date
+      border-top-left-radius: 30px
+      border-bottom-left-radius: 30px
+      border-left-color: $blue
+      background-color: $blue
+      color: $white
+    &--last-date, &--preselect
+      border-top-right-radius: 30px
+      border-bottom-right-radius: 30px
+      border-right-color: $blue
+    &--today
+      position: relative;
+    &--today:not(&--first-date):not(&--last-date):not(&--preselect):not(&--in-range)
+      background-color: #F2F2F2
+      border-radius: 30px
+    &--is-focused
+      background-color: white
+      border-radius: 30px
+      border: 1px solid $blue
+      &.date-time__day--in-range, &.date-time__day--first-date, &.date-time__day--preselect
+        color: $black
+  &__today-label
+    color: $blue
+    position: absolute
+    font-size: 1rem
+    text-transform: none
+    text-align: center
+    width: 100%
+    bottom: -12px
+  &__month, &__year
+    height: 50px
+    width: 25%
+    padding: 0px !important
+    &:not(&__disabled)
+      cursor: pointer
+    &--in-range,  &--current
+      background-color: $blue
+      color: $white
+    &--is-focused
+      background-color: white
+      border: 1px solid $blue
+      &.date-time__month--in-range, &.date-time__month--current,
+      &.date-time__year--in-range, &.date-time__year--current
+        color: $black
+  &__week-day
+    border-bottom: 1px solid #E5E5E5
+    color: rgba(0, 0, 0, 0.4)
+    font-weight: 500
+    padding-bottom: 5px
+    padding-top: 25px
+  &__switch
+    vertical-align: middle
+    &:hover
+      color: $blue
+      cursor: pointer
+  table
+    width: 280px
+    border-collapse: separate;
+    border-spacing: 0px 10px;
+    td
+      text-align: center
+      box-sizing: border-box;
+      vertical-align: middle
+      cursor: pointer

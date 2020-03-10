@@ -235,7 +235,7 @@ test('can select days in this month', () => {
   const linkElement = getByText(/All time/i);
   fireEvent.click(linkElement)
 
-  const firstDate = setDate(new Date(), 1);
+  const firstDate = setDate(new Date(), 2);
   const lastDate = setDate(new Date(), 10);
 
   const firstDateAttributeValue = format(firstDate, 'yyyy-MM-dd');
